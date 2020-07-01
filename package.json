@@ -1,0 +1,44 @@
+{
+  "name": "@grafana/tsbackend",
+  "version": "1.0.0",
+  "description": "Wrapper for writing a backend plugin in nodejs",
+  "main": "dist/index.js",
+  "files": [
+    "dist/**/*"
+  ],
+  "pkg": {
+    "assets": [
+      "/**/backend.proto"
+    ]
+  },
+  "bin": {
+    "grafana-tsbackend": "./bin/grafana-tsbackend"
+  },
+  "scripts": {
+    "build": "tsc --declaration",
+    "test": "",
+    "dev": "tsc --declaration",
+    "watch": ""
+  },
+  "author": "Stephanie Closson",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@grafana/data": "next",
+    "@grafana/toolkit": "next",
+    "@grafana/runtime": "next",
+    "@grafana/ui": "next",
+    "@types/lodash": "latest",
+    "grpc": "^1.24.3",
+    "google-protobuf": "^3.12.2",
+    "grpc-tools": "^1.9.0",
+    "typescript": "3.7.5",
+    "protoc-gen-grpc": "1.4.0",
+    "@grafana/tsconfig": "^1.0.0-rc1",
+    "request-promise-native": "1.0.8",
+    "@types/request-promise-native": "1.0.14",
+    "tslib":" ^2.0.0"
+  },
+  "engines": {
+    "node": ">=12 <13"
+  }
+}
