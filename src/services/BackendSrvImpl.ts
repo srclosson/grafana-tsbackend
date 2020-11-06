@@ -54,8 +54,8 @@ export class BackendSrvImpl implements BackendSrv {
   delete(url: string): Promise<any> {
     return this.datasourceRequest({ method: 'DELETE', url });
   }
-  post(url: string, data?: any): Promise<any> {
-    return this.datasourceRequest({ ...data, method: 'POST', url });
+  post(uri: string, body: any, data?: any): Promise<any> {
+    return this.datasourceRequest({ ...data, body, method: 'POST', uri });
   }
   patch(url: string, data?: any): Promise<any> {
     return this.datasourceRequest({ ...data, method: 'PATCH', url });
@@ -64,8 +64,8 @@ export class BackendSrvImpl implements BackendSrv {
     return this.datasourceRequest({ ...data, method: 'PUT', url });
   }
 
-  request(options: BackendSrvRequest): Promise<any> {
-    return this.datasourceRequest(options);
+  request<T>(options: BackendSrvRequest<T>): Promise<any> {
+    return this.datasourceRequest<T>(options);
   }
 
   get headers(): any {
@@ -82,7 +82,7 @@ export class BackendSrvImpl implements BackendSrv {
    * @param data *optional* For a specific data respose in the form of a promise
    * @returns Promise for a DataQueryResponse
    */
-  datasourceRequest<T>(request: BackendSrvRequest): Promise<BackendSrvResponse<T>> {
+  datasourceRequest<T>(request: BackendSrvRequest<T>): Promise<BackendSrvResponse<T>> {
     //logger.debug("==>", request);
     request.headers = this.headers;
     if (request.params) {

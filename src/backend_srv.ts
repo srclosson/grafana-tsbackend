@@ -3,11 +3,12 @@
  * https://docs.angularjs.org/api/ng/service/$http#usage
  * but that will likely change in the future
  */
-export type BackendSrvRequest = {
+export type BackendSrvRequest<T> = {
   url: string;
   retry?: number;
   headers?: any;
   method?: string;
+  body?: T; 
 
   // Show a message with the result
   showSuccessAlert?: boolean;
@@ -39,10 +40,10 @@ export interface BackendSrv {
 
   // If there is an error, set: err.isHandled = true
   // otherwise the backend will show a message for you
-  request(options: BackendSrvRequest): Promise<any>;
+  request<T>(options: BackendSrvRequest<T>): Promise<any>;
 
   // DataSource requests add hooks into the query inspector
-  datasourceRequest<T>(options: BackendSrvRequest): Promise<BackendSrvResponse<T>>;
+  datasourceRequest<T>(options: BackendSrvRequest<T>): Promise<BackendSrvResponse<T>>;
 }
 
 let singletonInstance: BackendSrv;
