@@ -31,6 +31,9 @@ export {
   DataResponse,
 } from './proto/backend_pb';
 
+import { BackendSrvImpl } from './services/BackendSrvImpl';
+export { BackendSrvImpl }
+
 export class ApiConnectionManager {
   apiMap: Record<string, API>;
   constructor() {
