@@ -19,7 +19,6 @@
     "build:protobuf": "./build.sh",
     "test": "",
     "dev": "yarn build",
-    "postinstall": "yarn build",
     "watch": ""
   },
   "author": "Stephanie Closson",
