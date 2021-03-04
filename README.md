@@ -38,17 +38,22 @@ yarn build
 Backend datasources send messages through grafanas backend. This means query responses are routed through grafana's alerting engine, giving your plugin alterting capabilities for free.
 
 To make migration of your frontend-only datasource plugin as simple as possible, the following should convert your plugin to a backend datasource
-1. Add the dependency to your package json and install `"@grafana/tsbackend": "srclosson/grafana-tsbackend"`
-2. Create a directory called `shared` and moves your `types.ts` file to shared.
-3. In the root of your plugin `cp node_modules/@grafana/tsbackend/tsconfig.backend.json .` to get the backend typescript compiler configuration for the backend.
-4. Create a directory called `backend` and then `cp node_modules@grafana/tsbackend/skel/*.ts backend/` to copy the skeleton files for the typescript backend.
-5. Edit the files in the backend directory. Change the class names. Import your query, and update the DataService so that the DataRequest is using your specific query type. Edit `index.ts` and ensure the proper files are renamed and being imported.
-6. Add the following to your package.json under the `scripts` section
+1. Edit your `plugin.json` and add the following:
 ```
- "backend": "./node_modules/@grafana/tsbackend/bin/grafana-tsbackend gpx_faker_darwin_amd64",
- "restart:backend": "kill $(ps -ef | grep gpx_faker_darwin_amd64 | grep -v grep | awk '{ print $2 }')",
+backend: true,
+executable: "gpx_<identifier>",
 ```
-7. Modify the entry for building the plugin. If desired, you can also add `yarn backend` to build the backend as well.
+2. Add the dependency to your package json and install `"@grafana/tsbackend": "srclosson/grafana-tsbackend"`
+3. Create a directory called `shared` and moves your `types.ts` file to shared.
+4. In the root of your plugin `cp node_modules/@grafana/tsbackend/tsconfig.backend.json .` to get the backend typescript compiler configuration for the backend.
+5. Create a directory called `backend` and then `cp node_modules@grafana/tsbackend/skel/*.ts backend/` to copy the skeleton files for the typescript backend.
+6. Edit the files in the backend directory. Change the class names. Import your query, and update the DataService so that the DataRequest is using your specific query type. Edit `index.ts` and ensure the proper files are renamed and being imported.
+7. Add the following to your package.json under the `scripts` section
+```
+ "backend": "./node_modules/@grafana/tsbackend/bin/grafana-tsbackend gpx_<identifier>_<platform (darwin/windows/linux>)_<architecture arm/amd64>",
+ "restart:backend": "kill $(ps -ef | grep gpx_<identifier>_<platform (darwin/windows/linux>)_<architecture arm/amd64> | grep -v grep | awk '{ print $2 }')",
+```
+8. Modify the entry for building the plugin. If desired, you can also add `yarn backend` to build the backend as well.
 
 #### Logging
 Logging takes places in the grafana log for backend plugins. To log:
