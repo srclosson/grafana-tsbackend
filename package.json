@@ -15,10 +15,10 @@
     "grafana-tsbackend": "./bin/grafana-tsbackend"
   },
   "scripts": {
-    "build": "tsc --declaration",
+    "build": "tsc -p tsconfig.build.json",
     "build:protobuf": "./build.sh",
     "test": "",
-    "dev": "tsc --declaration",
+    "dev": "yarn build",
     "postinstall": "yarn build",
     "watch": ""
   },
