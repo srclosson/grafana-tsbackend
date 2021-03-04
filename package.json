@@ -16,6 +16,7 @@
   },
   "scripts": {
     "build": "tsc --declaration",
+    "build:protobuf": "./build.sh",
     "test": "",
     "dev": "tsc --declaration",
     "watch": ""
@@ -23,11 +24,11 @@
   "author": "Stephanie Closson",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@grafana/data": "next",
-    "@grafana/toolkit": "next",
-    "@grafana/runtime": "next",
-    "@grafana/ui": "next",
-    "@types/lodash": "latest",
+    "@grafana/data": "7.4.2",
+    "@grafana/toolkit": "7.4.2",
+    "@grafana/runtime": "7.4.2",
+    "@grafana/ui": "7.4.2",
+    "@types/lodash": "4.14.168",
     "grpc": "^1.24.3",
     "google-protobuf": "^3.12.2",
     "grpc-tools": "^1.9.0",
