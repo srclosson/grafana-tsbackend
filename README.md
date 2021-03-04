@@ -33,10 +33,9 @@ yarn build
 ```
 
 ### Backend
-#### Using this framework
-##### Why use a backend datasource?
+#### Why use a backend datasource?
 Backend datasources send messages through grafanas backend. This means query responses are routed through grafana's alerting engine, giving your plugin alterting capabilities for free.
-
+#### Using this framework (migrate a frontend datasource to a backend one)
 To make migration of your frontend-only datasource plugin as simple as possible, the following should convert your plugin to a backend datasource
 1. Edit your `plugin.json` and add the following:
 ```
