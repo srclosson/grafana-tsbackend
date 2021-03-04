@@ -15,7 +15,7 @@
     "grafana-tsbackend": "./bin/grafana-tsbackend"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsc -d -p tsconfig.build.json",
     "build:protobuf": "./build.sh",
     "test": "",
     "dev": "yarn build",
